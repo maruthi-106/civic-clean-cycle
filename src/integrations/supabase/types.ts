@@ -14,7 +14,90 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      plastic_transactions: {
+        Row: {
+          buyer_id: string
+          created_at: string
+          id: string
+          pickup_address: string | null
+          pickup_date: string | null
+          plastic_type: string
+          price_per_kg: number
+          quantity_kg: number
+          seller_id: string
+          status: string
+          total_amount: number
+          updated_at: string
+        }
+        Insert: {
+          buyer_id: string
+          created_at?: string
+          id?: string
+          pickup_address?: string | null
+          pickup_date?: string | null
+          plastic_type: string
+          price_per_kg: number
+          quantity_kg: number
+          seller_id: string
+          status?: string
+          total_amount: number
+          updated_at?: string
+        }
+        Update: {
+          buyer_id?: string
+          created_at?: string
+          id?: string
+          pickup_address?: string | null
+          pickup_date?: string | null
+          plastic_type?: string
+          price_per_kg?: number
+          quantity_kg?: number
+          seller_id?: string
+          status?: string
+          total_amount?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          address: string | null
+          company_name: string | null
+          created_at: string
+          full_name: string | null
+          id: string
+          phone: string | null
+          plastic_price_per_kg: number | null
+          updated_at: string
+          user_id: string
+          user_type: Database["public"]["Enums"]["user_type"]
+        }
+        Insert: {
+          address?: string | null
+          company_name?: string | null
+          created_at?: string
+          full_name?: string | null
+          id?: string
+          phone?: string | null
+          plastic_price_per_kg?: number | null
+          updated_at?: string
+          user_id: string
+          user_type?: Database["public"]["Enums"]["user_type"]
+        }
+        Update: {
+          address?: string | null
+          company_name?: string | null
+          created_at?: string
+          full_name?: string | null
+          id?: string
+          phone?: string | null
+          plastic_price_per_kg?: number | null
+          updated_at?: string
+          user_id?: string
+          user_type?: Database["public"]["Enums"]["user_type"]
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -23,7 +106,7 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      user_type: "citizen" | "company"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +233,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      user_type: ["citizen", "company"],
+    },
   },
 } as const
